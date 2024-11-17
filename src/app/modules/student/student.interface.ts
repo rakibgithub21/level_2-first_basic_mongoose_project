@@ -1,4 +1,4 @@
-import { Schema, model, connect } from 'mongoose';
+
 
 //type for guardian
 export type Guardian = {
@@ -8,24 +8,37 @@ export type Guardian = {
     motherName: string,
     motherOccupation: string, 
     motherContactNo: string,
-        
+}
+
+// type for name
+export type UserName = {
+    firstName: string,
+    middleName: string,
+    lastName:string
+}
+
+//local Guardian type
+export type LocalGuardian = {
+    name: string,
+    occupation: string,
+    contactNo: string,
+    address: string,
 }
 
 
 export type Student = {
     id:string,
-    name: {
-        firstName: string,
-        middleName: string,
-        lastName:string
-    },
+    name: UserName,
     gender: "male" | "female",
-    dateOfBirth:string,
+    dateOfBirth?:string,
     email: string,
     contactNumber: string,
     emergencyContactNumber: string,
     bloodGRP?: "A+" | "A-" | "B+" | "B-" | "O+" | "O-" | "AB+" | "AB-",
     presentAddress: string,
     permanentAddress: string,
-    guardia:Guardian
+    guardian: Guardian,
+    localGuardian: LocalGuardian,
+    profileImage?:string,
+    isActive:'active'| 'blocked'
 }
